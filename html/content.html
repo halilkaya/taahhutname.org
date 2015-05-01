@@ -1,0 +1,77 @@
+{% extends 'master.html' %}
+
+{% block content %}
+{% include 'taahhut.html' %}
+
+<p class="lead">
+    Tweet
+    <a href="https://twitter.com/share" class="twitter-share-button"
+       data-url="https://taahhutname.org"
+       data-text="Özgür İnternet ve Dijital Hakların Korunması için Söz Veriyorum!"
+       data-size="large" data-related="altbilisim" data-hashtags="ungovForum">#sözVeriyorum</a>
+    <a href="https://twitter.com/altbilisim" class="twitter-follow-button" data-show-count="false"
+       data-lang="en" data-size="large">@altbilisim</a>
+</p>
+
+<div class="row clearfix">
+    <div class="col-md-6 column">
+        <h2 style="font-size: 180%;">
+            Milletvekili Adayları
+        </h2>
+
+        <p>
+            Taahhütname'ye imza vererek seçmenlere İnternet Özgürlüğü ve
+            Dijital Hakların korunması için söz verin.
+        </p>
+
+        <p>
+            <a class="btn btn-default btn-lg" href="#">İmzala »</a>
+        </p>
+    </div>
+    <div class="col-md-6 column">
+        <h2 style="font-size: 180%;">
+            Seçmenler
+        </h2>
+
+        <p>
+            Meclise göndermek istediğiniz vekil adaylarına, desteklediğiniz siyasi partinin Taahhütname'yi
+            imzalaması için baskı yapın.
+        </p>
+
+        <p>
+            <a class="btn btn-default btn-lg" href="#">Destekle »</a>
+        </p>
+    </div>
+</div>
+
+
+<a name="supporters" id="supporters"></a>
+
+<h2 class="text-center" style="font-size: 180%">İmzalayan Milletvekilleri</h2>
+
+{% include 'pagination.html' %}
+
+<div class="row clearfix text-center">
+    {% for i in range(0,6) %}
+    {% include 'imza.html' %}
+    {% endfor %}
+</div>
+<div class="row clearfix text-center">
+    {% for i in range(0,6) %}
+    {% include 'imza.html' %}
+    {% endfor %}
+</div>
+
+{% include 'pagination.html' %}
+
+<a name="contact" id="contact"></a>
+
+<h2>Contact</h2>
+
+<p class="lead">
+    Email <a href="mailto:bilgi@alternatifbilisim.org">bilgi@alternatifbilisim.org</a><br/>
+    Tweet <a href="https://twitter.com/altbilisim" target="_blank">@altbilisim</a><br/>
+    Visit <a href="https://alternatifbilisim.org">alternatifbilisim.org</a>
+</p>
+
+{% endblock %}

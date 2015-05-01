@@ -1,0 +1,95 @@
+<!doctype html>
+{% include 'aaron.html' %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Taahhütname.org, 7 Haziran 2015 seçimlerinde milletvekili adaylarının seçilmeleri halinde,
+          dijital hak ve özgürlüklerin korunması hakkında yurttaşlarla yaptıkları sözleşmedir.">
+    <meta name="author" content="Alternative Informatics Association">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <title>Taahhütname</title>
+
+    <meta property="og:title" content="Internet Ungovernance Forum">
+    <meta property="og:description" content="Taahhutname.org, 7 Haziran 2015 seçimlerinde milletvekili adaylarının seçilmeleri halinde,
+          dijital hak ve özgürlüklerin korunması hakkında yurttaşlarla yaptıkları sözleşmedir."/>
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://taahhutname.org/img/ungovinternet-poster-3.jpg">
+    <meta property="og:url" content="https://taahhutname.org">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@altbilisim">
+    <meta name="twitter:title" content="Taahhütname - Internet ve Dijital Özgürlükler için Söz Veriyorum">
+    <meta name="twitter:description"
+          content="Internet Ungovernance Forum is for those of us who demand free, secure, and open internet for the people!">
+    <meta name="twitter:creator" content="@altbilisim">
+    <meta name="twitter:image:src" content="https://iuf.alternatifbilisim.org/img/ungovinternet-poster-3.jpg">
+    <meta name="twitter:domain" content="iuf.alternatifbilisim.org">
+
+	<!-- TODO: Embed font inside the site. don't load from google -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,800,700italic,800italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top pull-right">
+</div>
+
+<a name="home" id="home"></a>
+
+<div class="jumbotron">
+    <div class="container text-center">
+        <img src="img/sozveriyorum.png" class="img-responsive" style="margin: 0 auto;">
+        <!--<h1>taahhütname</h1>-->
+    </div>
+</div>
+
+<div class="body-content">
+    <div class="container">
+		{% block content %}
+		{{ page.content }}
+		{% endblock %}
+    </div>
+</div>
+
+<footer role="contentinfo">
+    <div class="container text-center">
+        <p>
+            Website License GNU/GPL v3
+        </p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery-lang.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/tr.js" charset="utf-8"></script>
+
+<!-- TODO: Get rid of sneaky twitter too, make it load on hover/ load on click -->
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+    !function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + '://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, 'script', 'twitter-wjs');
+</script>
+	
+</body>
+</html>

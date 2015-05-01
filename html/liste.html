@@ -1,0 +1,11 @@
+{% extends 'master.html' %}
+
+{% block title-extend %} - Millet Vekili Listesi {% endblock %}
+
+{% block content %}
+
+{% for vekil in liste %}
+<li>{{vekil.name}} {{vekil.signStatus}} {% if vekil.additionalComments %}<a href="/vekil/{{ vekil.id }}/yorum">Ozel Yorum</a></li>
+{% endfor %}
+
+{% endblock %}

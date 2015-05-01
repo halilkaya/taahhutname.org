@@ -1,11 +1,4 @@
-/img/supporters/.DS_Store
-
-/img/.DS_Store
-
-/img/ungovinternet-poster-3.pdf
-
-/img/ungovinternet-poster-3-tr.pdf
-
-/.DS_Store
-
-/.idea
+/node_modules
+/data/*
+!/data/*sample*
+!/data/.gitkeep

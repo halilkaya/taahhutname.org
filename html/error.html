@@ -1,0 +1,14 @@
+{% extends 'master.html' %}
+
+{% block title_extend %} - Hata: {{ error.localMessage or error.message }}{% endblock %}
+
+{% block content %}
+
+<div class="error-page">
+	<h1>Hata: {{ error.localMessage or error.message }}</h1>
+	<p>
+		{{ error.localDescription or error.description }}
+	</p>
+</div>
+
+{% endblock %}
