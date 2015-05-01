@@ -13,6 +13,7 @@
   "author": "Alternatif Bilisim Dernegi",
   "license": "GPL",
   "dependencies": {
+    "bluebird": "^2.9.25",
     "express": "^4.12.3",
     "gray-matter": "^2.0.0",
     "moment": "^2.10.2",

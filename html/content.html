@@ -51,15 +51,8 @@
 
 {% include 'pagination.html' %}
 
-<div class="row clearfix text-center">
-    {% for i in range(0,6) %}
-    {% include 'imza.html' %}
-    {% endfor %}
-</div>
-<div class="row clearfix text-center">
-    {% for i in range(0,6) %}
-    {% include 'imza.html' %}
-    {% endfor %}
+<div id="list_wrapper">
+{% include 'list.html' %}
 </div>
 
 {% include 'pagination.html' %}

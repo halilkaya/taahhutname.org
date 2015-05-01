@@ -3,7 +3,9 @@ var _ = require('underscore');
 var matter = require('gray-matter');
 var Path = require('path');
 var config = {
-  port: 8080
+  port: 8080,
+  dataCacheTTL: 30,
+  defaultCacheTTL: 10
 };
 var Page = require('./lib/page');
 Page.configure({

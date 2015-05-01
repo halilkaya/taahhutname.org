@@ -1,0 +1,7 @@
+{% for r in range(0, list.length / 6 | round(0, 'ceil')) %}
+<div class="row clearfix text-center">
+    {% for imza in list.slice(r*6, (r+1)*6) %}
+    {% include 'imza.html' %}
+    {% endfor %}
+</div>
+{% endfor %}
