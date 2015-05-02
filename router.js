@@ -65,16 +65,41 @@ dataController.getPaginationInfo = function(page) {
 	});
 };
 dataController.search = function(keyword, page) {
-	return {
-		data: [],
-		pagination: {
-			search: search,
-			current: page,
-			count: 0,
-			countOnPage: 0,
-			pages: 0
-		}
-	};
+	return dataController.cache.promise()
+	.then(function(data) {
+
+		// regex escape
+		keyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		var regex = new RegExp(keyword, 'i');
+
+		// filter
+		var searchData = data.filter(function(item) {
+			// -- CHANGE HERE FOR SEARCH
+
+			if (regex.exec(item.first_name))
+				return true;
+
+			if (regex.exec(item.last_name))
+				return true;
+
+			// -- STOP CHANGE HERE FOR SEARCH
+			return false;
+		});
+
+		// paginate
+		var pageData = searchData.splice(page * perpage, perpage);
+
+		return {
+			data: pageData,
+			pagination: {
+				search: keyword,
+				current: page,
+				count: searchData.length,
+				countOnPage: pageData.length,
+				pages: Math.ceil(searchData.length / perpage)
+			}
+		};	
+	});
 };
 
 /*
@@ -108,7 +133,6 @@ router.get('/liste', function(req,res) {
 	}).then(function(context) {
 		res.page.send('list.html', context);
 	});
-
 });
 router.get('/liste/sayfa/:page', function(req,res) {
 	Promise.props({
@@ -121,24 +145,33 @@ router.get('/liste/sayfa/:page', function(req,res) {
 		// }, 3000);
 	});
 });
-router.search('/liste/arama/:keyword', function(req,res) {
-	Promise.props({
-		currentPage: 0,
-		searchKeyword: req.params.keyword,
-		list: dataController.search(req.params.keyword, 0).data,
-		pagination: dataController.search(req.params.keyword).pagination
-	}).then(function(context) {
+router.get('/liste/arama/:keyword', function(req,res) {
+	dataController.search(req.params.keyword, 0)
+	.then(function(search) {
+		return {
+			currentPage: 0,
+			searchKeyword: req.params.keyword,
+			list: search.data,
+			pagination: search.pagination,
+			replacePagination: true
+		};
+	})
+	.then(function(context) {
 		res.page.send('list.html', context);
 	});
 });
-router.search('/liste/arama/:keyword/sayfa/:page', function(req,res) {
-	Promise.props({
-		currentPage: req.params.page - 1,
-		searchKeyword: req.params.keyword,
-		search: dataController.search(req.params.keyword, req.params.page - 1)
-	}).then(function(context) {
-		context.list = search.data;
-		context.pagination = search.pagination;
+router.get('/liste/arama/:keyword/sayfa/:page', function(req,res) {
+	dataController.search(req.params.keyword, req.params.page - 1)
+	.then(function(search) {
+		return {
+			currentPage: req.params.page - 1,
+			searchKeyword: req.params.keyword,
+			list: search.data,
+			pagination: search.pagination,
+			replacePagination: true
+		};
+	})
+	.then(function(context) {
 		res.page.send('list.html', context);
 	});
 });
