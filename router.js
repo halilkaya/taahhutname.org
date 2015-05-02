@@ -116,7 +116,9 @@ router.get('/liste/sayfa/:page', function(req,res) {
 		list: dataController.getPage(req.params.page - 1),
 		pagination: dataController.getPaginationInfo(0)
 	}).then(function(context) {
-		res.page.send('list.html', context);
+		// setTimeout(function() { // was a loading animation test
+			res.page.send('list.html', context);
+		// }, 3000);
 	});
 });
 router.search('/liste/arama/:keyword', function(req,res) {
