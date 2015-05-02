@@ -9,8 +9,18 @@ TODO
  - [ ] Search
  - [ ] Better Sample Data (Closer to our usage)
  - [ ]   And template changes using better sample data
- 
-.. ?
+
+
+INSTALL
+=======
+```
+npm install
+node app.js
+```
+
+http://localhost:8080/
+
+
 
 BENCHMARK
 =========
