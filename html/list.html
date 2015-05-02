@@ -1,6 +1,6 @@
-{% for r in range(0, list.length / 6 | round(0, 'ceil')) %}
+{% for alti in list | batch(6) %}
 <div class="row clearfix text-center">
-    {% for imza in list.slice(r*6, (r+1)*6) %}
+    {% for imza in alti %}
     {% include 'imza.html' %}
     {% endfor %}
 </div>

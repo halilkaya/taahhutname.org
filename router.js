@@ -18,7 +18,7 @@ var scss = new Cache({
   		}, cb);
 	},
 	ttl: 60,
-	// eager: true	
+	// eager: true // this will keep refreshing in background
 });
 router.get('/assets/style.css', function(req, res) {
 	scss.promise()
@@ -35,7 +35,7 @@ router.use('/assets', express.static('assets'));
 
 */
 var dataController = {};
-var perpage = 15;
+var perpage = 12;
 
 dataController.cache = new Cache({
 	promise: function() {
@@ -45,7 +45,7 @@ dataController.cache = new Cache({
 		});
 	},
 	ttl: 10,
-	// eager: true
+	// eager: true // this will keep refreshing in background
 });
 dataController.getPage = function(page) {
 	return dataController.cache.promise()
@@ -53,10 +53,12 @@ dataController.getPage = function(page) {
 		return data.splice(page * perpage, perpage);
 	});
 };
-dataController.getPaginationInfo = function() {
+dataController.getPaginationInfo = function(page) {
 	return dataController.cache.promise()
 	.then(function(data) {
 		return {
+			current: page,
+			countOnPage: data.length - (perpage * page),
 			count: data.length,
 			pages: Math.ceil(data.length / perpage)
 		};
@@ -66,7 +68,10 @@ dataController.search = function(keyword, page) {
 	return {
 		data: [],
 		pagination: {
+			search: search,
+			current: page,
 			count: 0,
+			countOnPage: 0,
 			pages: 0
 		}
 	};
@@ -99,19 +104,19 @@ router.get('/liste', function(req,res) {
 	Promise.props({
 		currentPage: 0,
 		list: dataController.getPage(0),
-		pagination: dataController.getPaginationInfo()
+		pagination: dataController.getPaginationInfo(0)
 	}).then(function(context) {
-		res.page.send('liste.html', context);
+		res.page.send('list.html', context);
 	});
 
 });
 router.get('/liste/sayfa/:page', function(req,res) {
 	Promise.props({
-		currentPage: req.params.page,
-		list: dataController.getPage(req.params.page),
-		pagination: dataController.getPaginationInfo()
+		currentPage: req.params.page - 1,
+		list: dataController.getPage(req.params.page - 1),
+		pagination: dataController.getPaginationInfo(0)
 	}).then(function(context) {
-		res.page.send('liste.html', context);
+		res.page.send('list.html', context);
 	});
 });
 router.search('/liste/arama/:keyword', function(req,res) {
@@ -121,18 +126,18 @@ router.search('/liste/arama/:keyword', function(req,res) {
 		list: dataController.search(req.params.keyword, 0).data,
 		pagination: dataController.search(req.params.keyword).pagination
 	}).then(function(context) {
-		res.page.send('liste.html', context);
+		res.page.send('list.html', context);
 	});
 });
 router.search('/liste/arama/:keyword/sayfa/:page', function(req,res) {
 	Promise.props({
-		currentPage: req.params.page,
+		currentPage: req.params.page - 1,
 		searchKeyword: req.params.keyword,
-		search: dataController.search(req.params.keyword, req.params.page)
+		search: dataController.search(req.params.keyword, req.params.page - 1)
 	}).then(function(context) {
 		context.list = search.data;
 		context.pagination = search.pagination;
-		res.page.send('liste.html', context);
+		res.page.send('list.html', context);
 	});
 });
 
@@ -149,7 +154,7 @@ router.get(/\/(index(\.html)?)?$/, function(req, res) {
 	Promise.props({
 		currentPage: 0,
 		list: dataController.getPage(0),
-		pagination: dataController.getPaginationInfo()
+		pagination: dataController.getPaginationInfo(0)
 	})
 	.then(function(context) {
 		console.log("\t Done #" + counterValue);

@@ -1,24 +1,17 @@
 <ul class="pagination">
-    <li>
-        <a href="#">Önceki</a>
+    <li{% if pagination.current == 0 %} class="disabled"{% endif %}>
+        <a href="#onceki-sayfa">Önceki</a>
     </li>
-    <li>
-        <a href="#">1</a>
+    <li class="{% if pagination.current == 0 %}active{% endif %}">
+        <a href="#1.sayfa">1</a>
     </li>
-    <li>
-        <a href="#">2</a>
+    {% for i in range(1,pagination.pages) %}
+    <li class="{% if pagination.current == i %}active{% endif %}">
+        <a href="#{{i + 1}}.sayfa">{{ i + 1 }}</a>
     </li>
-    <li>
-        <a href="#">3</a>
+    {% endfor %}
+    <li{% if pagination.current >= pagination.pages - 1 %} class="disabled"{% endif %}>
+        <a href="#sonraki-sayfa">Sonraki</a>
     </li>
-    <li>
-        <a href="#">4</a>
-    </li>
-    <li>
-        <a href="#">5</a>
-    </li>
-    <li>
-        <a href="#">Sonraki</a>
-    </li>
-    <li><input type="text" class="form-control" placeholder="Milletvekili veya şehir / bölge arama"/></li>
+    <li><input type="text" class="form-control" placeholder="Milletvekili veya şehir / bölge arama" value="{{pagination.search}}"/></li>
 </ul>
