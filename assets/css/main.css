@@ -1,3 +1,23 @@
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(../fonts/opensans/OpenSans-Regular.woff2) format('woff2'), url(../fonts/opensans/OpenSans-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(../fonts/opensans/OpenSans-Bold.woff2) format('woff2'), url(../fonts/opensans/OpenSans-Bold.woff2) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(../fonts/opensans/OpenSans-ExtraBold.woff2) format('woff2'), url(../fonts/opensans/OpenSans-ExtraBold.woff) format('woff');
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -138,3 +158,14 @@ footer {
 .body-content .supporters div.text-center {
     min-height: 160px;
 }
+
+
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: block;
+}
+

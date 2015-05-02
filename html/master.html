@@ -14,7 +14,7 @@
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <title>Taahhütname</title>
 
-    <meta property="og:title" content="Internet Ungovernance Forum">
+    <meta property="og:title" content="Taahhütname - Internet ve Dijital Özgürlükler için Söz Veriyorum">
     <meta property="og:description" content="Taahhutname.org, 7 Haziran 2015 seçimlerinde milletvekili adaylarının seçilmeleri halinde,
           dijital hak ve özgürlüklerin korunması hakkında yurttaşlarla yaptıkları sözleşmedir."/>
     <meta property="og:type" content="article">
@@ -25,20 +25,18 @@
     <meta name="twitter:site" content="@altbilisim">
     <meta name="twitter:title" content="Taahhütname - Internet ve Dijital Özgürlükler için Söz Veriyorum">
     <meta name="twitter:description"
-          content="Internet Ungovernance Forum is for those of us who demand free, secure, and open internet for the people!">
+          content="Taahhütname - Internet ve Dijital Özgürlükler için Söz Veriyorum">
     <meta name="twitter:creator" content="@altbilisim">
-    <meta name="twitter:image:src" content="https://iuf.alternatifbilisim.org/img/ungovinternet-poster-3.jpg">
-    <meta name="twitter:domain" content="iuf.alternatifbilisim.org">
+    <meta name="twitter:image:src" content="https://taahhutname.org/img/sozveriyorum.png">
+    <meta name="twitter:domain" content="taahhutname.org">
 
-	<!-- TODO: Embed font inside the site. don't load from google -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,800,700italic,800italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.js"></script>
-    <script src="assets/js/respond/respond.min.js"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
     <![endif]-->
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -65,33 +63,23 @@
 
 <div class="body-content">
     <div class="container">
-		{% block content %}
-		{{ page.content }}
-		{% endblock %}
+        {% block content %}
+        {{ page.content }}
+        {% endblock %}
     </div>
 </div>
 
 <footer role="contentinfo">
     <div class="container text-center">
         <p>
+            Bir <a href="https://alternatifbilisim.org" target="_blank">Alternatif Bilişim</a> kampanyasıdır.
+
             Website License GNU/GPL v3
+
+            <img src="img/alternatifbilisim-logo-horizontal.png" class="img-responsive" style="margin: 15px auto;">
         </p>
     </div>
 </footer>
 
-<!-- TODO: Get rid of sneaky twitter too, make it load on hover/ load on click -->
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<script>
-    !function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-        if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = p + '://platform.twitter.com/widgets.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }
-    }(document, 'script', 'twitter-wjs');
-</script>
-	
 </body>
 </html>
